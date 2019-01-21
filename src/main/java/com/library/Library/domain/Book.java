@@ -1,20 +1,29 @@
 package com.library.Library.domain;
+import javax.persistence.*;
+import java.util.Random;
 
-import org.springframework.stereotype.Component;
-
-@Component
+@Entity
+@Table (name = "book")
 public class Book {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+    @Column (name = "book_title")
     private String title;
     private int year;
     private String publisher;
     private String isbn;
 
-    public Book (){
-        this.title = "Ogniem i mieczem";
-        this.year = 1997;
-        this.publisher = "Wydawnictwo PWN";
-        this.isbn = "10-25-687-511";
+
+    public Book(String title, int year, String publisher, String isbn) {
+        this.title = title;
+        this.year = year;
+        this.publisher = publisher;
+        this.isbn = isbn;
     }
+
+    public Book() { }
+
     public String getTitle() {
         return title;
     }
@@ -55,5 +64,13 @@ public class Book {
                 ", publisher='" + publisher + '\'' +
                 ", isbn='" + isbn + '\'' +
                 '}';
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
