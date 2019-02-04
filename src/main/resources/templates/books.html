@@ -11,28 +11,29 @@
 </head>
 <body>
     <div class="container">
-        <table class="table">
-            <thead>
-            <td>Tytuł książki</td>
-            <td>Rok wydania</td>
-            <td>Wydawca</td>
-            <td>ISBN</td>
-            <td>ISBN</td>
-            <td>ISBN</td>
-            <td></td>
-            <td></td>
+        <table class="table table-striped">
+            <thead class="thead-dark">
+            <th scope="col">Tytuł książki</th>
+            <th scope="col">Autor</th>
+            <th scope="col">Rok wydania</th>
+            <th scope="col">Wydawca</th>
+            <th scope="col">ISBN</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
             </thead>
             <tbody th:each="element : ${books}">
             <tr>
                 <td th:text=${element.title}></td>
+                <td th:text=${element.author.name}></td>
                 <td th:text=${element.year}></td>
                 <td th:text=${element.publisher}></td>
                 <td th:text=${element.isbn}></td>
-                <td>Edytuj</td>
+                <td><a th:href="${'/books/edit/' + element.id}">Edytuj</a></td>
                 <td><a th:href="${'/books/delete/' + element.id}">Usuń</a></td>
             </tr>
             </tbody>
         </table>
+        <a th:href="${'/books/add'}">Dodaj książkę</a>
     </div>
 </body>
 </html>

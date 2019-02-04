@@ -1,5 +1,6 @@
 package com.library.Library;
 
+import com.library.Library.domain.Author;
 import com.library.Library.domain.Book;
 import com.library.Library.repository.BookRepository;
 import com.library.Library.service.BookService;
@@ -27,8 +28,8 @@ public class AppStarter implements CommandLineRunner{
     }
 
     public void init(){
-        Book book = new Book("Przygody Witka", 2018, "Nova", "523 622 689");
-        Book book1 = new Book("Przygody Magdy", 2018, "Nova", "523 622 689");
+        Book book = new Book("Przygody Witka", 2018, "Nova", "523 622 689", new Author("Jakiś tam"));
+        Book book1 = new Book("Przygody Magdy", 2018, "Nova", "523 622 689", new Author("Cos yam"));
         bookService.saveBook(book);
         bookService.saveBook(book1);
     }
