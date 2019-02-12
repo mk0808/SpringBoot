@@ -14,7 +14,6 @@ import org.springframework.stereotype.Component;
 
 @PropertySource("classpath:custom.properties")
 @Component
-
 public class AppStarter implements CommandLineRunner{
 
     @Autowired
@@ -28,8 +27,8 @@ public class AppStarter implements CommandLineRunner{
     }
 
     public void init(){
-        Book book = new Book("Przygody Witka", 2018, "Nova", "523 622 689", new Author("Jakiś tam"));
-        Book book1 = new Book("Przygody Magdy", 2018, "Nova", "523 622 689", new Author("Cos yam"));
+        Book book = new Book("Przygody Witka", 2018, "Nova", "5236226891", new Author("Jakiś tam"));
+        Book book1 = new Book("Przygody Magdy", 2018, "Nova", "5235622689", new Author("Cos yam"));
         bookService.saveBook(book);
         bookService.saveBook(book1);
     }

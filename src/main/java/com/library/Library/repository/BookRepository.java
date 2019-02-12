@@ -36,4 +36,8 @@ public class BookRepository{
         if(book != null) em.remove(book);
     }
 
+    public Collection<Book> getBooksByAuthor(String authorName){
+        return em.createQuery("from Book b JOIN Author a ON b.author_id = a.id WHERE a.name = :authorName", Book.class).getResultList();
+    }
+
 }

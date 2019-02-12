@@ -13,6 +13,7 @@
 <div class="container">
     <form class="form-horizontal" th:object="${book}" th:action="@{/books}" th:method="post">
         <input type="hidden" th:field="*{id}"/>
+        <input type="hidden" th:field="*{author.id}"/>
        <div class="form-group">
            <label class="control-label">Tytuł:</label>
            <input type="text" class="form-control" th:field="*{title}"/>
@@ -22,6 +23,7 @@
         <div class="form-group">
             <label class="control-label">Autor:</label>
             <input type="text" class="form-control" th:field="*{author.name}"/>
+            <p th:if="${#fields.hasErrors('author.name')}" th:errors="*{author.name}"/>
         </div>
 
         <div class="form-group">
@@ -34,11 +36,13 @@
         <div class="form-group">
             <label class="control-label">Wydawca:</label>
             <input type="text" class="form-control" th:field="*{publisher}"/>
+            <p th:if="${#fields.hasErrors('publisher')}" th:errors="*{publisher}"/>
         </div>
 
         <div class="form-group">
             <label class="control-label">ISBN:</label>
             <input type="text" class="form-control" th:field="*{isbn}"/>
+            <p th:if="${#fields.hasErrors('isbn')}" th:errors="*{isbn}"/>
         </div>
         <div class="row">
             <button type="submit" class="btn btn-primary float-left">Zapisz</button>
