@@ -2,13 +2,10 @@ package com.library.Library;
 
 import com.library.Library.domain.Author;
 import com.library.Library.domain.Book;
-import com.library.Library.repository.BookRepository;
 import com.library.Library.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 

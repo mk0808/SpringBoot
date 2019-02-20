@@ -1,10 +1,11 @@
 package com.library.Library.domain;
+
 import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
 import javax.validation.Valid;
-import javax.validation.constraints.*;
-import java.util.Random;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table (name = "book")

@@ -50,4 +50,23 @@ public class BookService {
     public Book getBook(int id){
         return bookRepository.getBook(id);
     }
+
+    public List<Book> getBooksByAuthor(String name){
+        if(name!=null)
+            return  new ArrayList<>(bookRepository.getBooksByAuthor(name));
+        else
+            return new ArrayList<>();
+    }
+
+    public List<Book> getBooks(String isbn, String publisher, Integer year){
+        return new ArrayList<>(bookRepository.getBooks(isbn, publisher, year));
+    }
+
+    public List<Book> getBooksByTitle(String title){
+        if(title!=null)
+            return  new ArrayList<>(bookRepository.getBooksByTitle(title));
+        else
+            return new ArrayList<>();
+    }
+
 }
