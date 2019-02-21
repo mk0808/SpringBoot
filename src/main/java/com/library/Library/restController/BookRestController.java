@@ -1,7 +1,9 @@
 package com.library.Library.restController;
 
 import com.library.Library.domain.Book;
+import com.library.Library.modelDTO.BookDTO;
 import com.library.Library.service.BookService;
+import com.library.Library.service.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +18,9 @@ public class BookRestController {
 
     @Autowired
     BookService bookService;
+
+    @Autowired
+    Mapper mapper;
 
     @GetMapping(path = "/books")
     public ResponseEntity<List<Book>> getBooks(){
@@ -40,7 +45,8 @@ public class BookRestController {
     }
 
     @PostMapping(path = "/books/add")
-    public ResponseEntity<Void> addBook(@RequestBody Book book){
+    public ResponseEntity<Void> addBook(@RequestBody BookDTO bookDTO){
+        Book book = mapper.convertBookToEntity(bookDTO);
         if(book == null)
             return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
 
@@ -49,7 +55,9 @@ public class BookRestController {
     }
 
     @PostMapping(path = "/books/edit/{id}")
-    public ResponseEntity<Void> editBook(@PathVariable("id") int id, @RequestBody Book book){
+    public ResponseEntity<Void> editBook(@PathVariable("id") int id, @RequestBody BookDTO bookDTO){
+        Book book = mapper.convertBookToEntity(bookDTO);
+
         Book updateBook = bookService.getBook(id);
 
         if(updateBook == null)
