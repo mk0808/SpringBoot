@@ -2,38 +2,45 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Książki</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
-    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.2.1/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.2.1/css/bootstrap.min.css}"/>
 
     <script th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
     <script th:src="@{/webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
 </head>
 <body>
-    <div class="container">
-        <table class="table table-striped">
-            <thead class="thead-dark">
-            <th scope="col">Tytuł książki</th>
-            <th scope="col">Autor</th>
-            <th scope="col">Rok wydania</th>
-            <th scope="col">Wydawca</th>
-            <th scope="col">ISBN</th>
-            <th scope="col"></th>
-            <th scope="col"></th>
-            </thead>
-            <tbody th:each="element : ${books}">
-            <tr>
-                <td th:text=${element.title}></td>
-                <td th:text=${element.author.name}></td>
-                <td th:text=${element.year}></td>
-                <td th:text=${element.publisher}></td>
-                <td th:text=${element.isbn}></td>
-                <td><a th:href="${'/books/edit/' + element.id}">Edytuj</a></td>
-                <td><a th:href="${'/books/delete/' + element.id}">Usuń</a></td>
-            </tr>
-            </tbody>
-        </table>
-        <a th:href="${'/books/add'}">Dodaj książkę</a>
+<div class="row">
+    <div class="text-right">
+        <form action="#" th:action="@{/logout}" method="post">
+            <button type="submit" class="btn btn-primary float-right">Wyloguj</button>
+        </form>
     </div>
+</div>
+<div class="container">
+    <table class="table table-striped">
+        <thead class="thead-dark">
+        <th scope="col">Tytuł książki</th>
+        <th scope="col">Autor</th>
+        <th scope="col">Rok wydania</th>
+        <th scope="col">Wydawca</th>
+        <th scope="col">ISBN</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        </thead>
+        <tbody th:each="element : ${books}">
+        <tr>
+            <td th:text=${element.title}></td>
+            <td th:text=${element.author.name}></td>
+            <td th:text=${element.year}></td>
+            <td th:text=${element.publisher}></td>
+            <td th:text=${element.isbn}></td>
+            <td><a th:href="${'/books/edit/' + element.id}">Edytuj</a></td>
+            <td><a th:href="${'/books/delete/' + element.id}">Usuń</a></td>
+        </tr>
+        </tbody>
+    </table>
+    <a th:href="${'/books/add'}">Dodaj książkę</a>
+</div>
 </body>
 </html>
