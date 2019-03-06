@@ -10,14 +10,12 @@
     <script th:src="@{/webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
 </head>
 <body>
-<div class="row">
-    <div class="text-right">
+<div class="container">
+    <div class="float-right">
         <form action="#" th:action="@{/logout}" method="post">
-            <button type="submit" class="btn btn-primary float-right">Wyloguj</button>
+            <button type="submit" class="btn btn-primary">Wyloguj</button>
         </form>
     </div>
-</div>
-<div class="container">
     <table class="table table-striped">
         <thead class="thead-dark">
         <th scope="col">Tytuł książki</th>
