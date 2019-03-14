@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.Set;
 
 @Entity
 @Table (name = "book")
@@ -35,6 +36,9 @@ public class Book {
     @OneToOne
     @Valid
     Author author;
+
+    @OneToMany(mappedBy = "hiredBook", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<Hire> hires;
 
     public Book(String title, Integer year, String publisher, String isbn, Author author) {
         this.title = title;
