@@ -11,6 +11,9 @@
 </head>
 <body>
 <div class="container">
+    <div class="float-left">
+        <p th:text="${'Witaj, ' + user.firstName + ' ' + user.lastName + ' (' + user.login + ')' }"></p>
+    </div>
     <div class="float-right">
         <form action="#" th:action="@{/logout}" method="post">
             <button type="submit" class="btn btn-primary">Wyloguj</button>
@@ -23,6 +26,7 @@
         <th scope="col">Rok wydania</th>
         <th scope="col">Wydawca</th>
         <th scope="col">ISBN</th>
+        <th scope="col">Wypożyczenia</th>
         <th scope="col"></th>
         <th scope="col"></th>
         </thead>
@@ -33,6 +37,7 @@
             <td th:text=${element.year}></td>
             <td th:text=${element.publisher}></td>
             <td th:text=${element.isbn}></td>
+            <td><a th:href="${'/books/hires/' + element.id}">Pokaż</a></td>
             <td><a th:href="${'/books/edit/' + element.id}">Edytuj</a></td>
             <td><a th:href="${'/books/delete/' + element.id}">Usuń</a></td>
         </tr>

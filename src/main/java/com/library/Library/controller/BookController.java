@@ -1,7 +1,9 @@
 package com.library.Library.controller;
 
 import com.library.Library.domain.Book;
+import com.library.Library.domain.User;
 import com.library.Library.service.BookService;
+import com.library.Library.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +21,9 @@ public class BookController {
     @Autowired
     BookService bookService;
 
+    @Autowired
+    UserService userService;
+
     @GetMapping(value = "/")
     public String redirectToMainPage(){
         return "redirect:/books";
@@ -27,8 +32,10 @@ public class BookController {
     @GetMapping(value = "/books")
     public String getBooks(Model model){
         List<Book> books = bookService.getBooks();
+        User loggedUser = userService.getLoggedUser();
         //przekazywanie obiektów book do html za pomocą klasy Model
         model.addAttribute("books", books);
+        model.addAttribute("user", loggedUser);
         return "books";
     }
 
@@ -61,5 +68,7 @@ public class BookController {
         model.addAttribute("book",book);
         return "book";
     }
+
+
 
 }
